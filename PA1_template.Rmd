@@ -1,3 +1,8 @@
+---
+output:
+  html_document:
+    keep_md: yes
+---
 ### Peer Assessment 1 for Reproducible Research
 
 
@@ -27,7 +32,7 @@ hist(steps$total, main="Total Steps per Day", xlab="Step Count", col="red")
 meansteps <- mean(steps$total, na.rm="TRUE")
 meansteps
 ```
-**The mean total number of steps per day is `r meansteps`. **  
+**The mean total number of steps per day is `r meansteps`.**  
 
 ```{r, echo=TRUE}
 medsteps <- median(steps$total, na.rm="TRUE")
@@ -59,10 +64,8 @@ intervalMax
 
 #### Imputing missing values
 
-* Calculate and report the total number of missing values in the dataset 
-
-* Fill in all of the missing values in the dataset using the mean for that 5-minute interval.
-
+* Calculate and report the total number of missing values in the dataset. 
+* Devise a strategy for filling in all of the missing values in the dataset. 
 * Create a new dataset that is equal to the original dataset but with the missing data filled in.
 ```{r, echo=TRUE}
 missingValueCount <- length(which(is.na(activityData$steps)))
@@ -71,7 +74,7 @@ missingValueCount
 **The total number of missing values is `r missingValueCount`.** 
 
 
-**Missing values are replaced with mean of values corresponding the 5-minute interval.** 
+**Missing values are replaced with the mean of the missing value's corresponding the 5-minute interval.** 
 ```{r, echo=TRUE}
 newDataSet <- merge(activityData,stepsPerInterval,by.x="interval",by.y="interval",all=FALSE)
 
@@ -93,12 +96,12 @@ hist(stepsReplaceMiss$total, main="Total Steps per Day", xlab="Step Count", col=
 meansteps2 <- mean(stepsReplaceMiss$total, na.rm="TRUE")
 meansteps2
 ```
-**The mean total number of steps per day is `r meansteps2`.  **  
+**The mean total number of steps per day is `r meansteps2`.**  
 ```{r, echo=TRUE}
 medsteps2 <- median(stepsReplaceMiss$total, na.rm="TRUE")
 medsteps2
 ```
-**The median total number of steps per day is `r medsteps2`. **  
+**The median total number of steps per day is `r medsteps2`.**  
 **The impact of replacing missing values is very small.**  
 **The median differs when replacing missing values. It changes from 10765 to 10766.19**  
 

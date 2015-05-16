@@ -86,7 +86,7 @@ steps &lt;- ddply(activityData, c(&quot;date&quot;), summarise, total = sum(step
 <pre class="r"><code>meansteps &lt;- mean(steps$total, na.rm=&quot;TRUE&quot;)
 meansteps</code></pre>
 <pre><code>## [1] 10766.19</code></pre>
-<p><strong>The mean total number of steps per day is 1.076618910^{4}. </strong></p>
+<p><strong>The mean total number of steps per day is 1.076618910^{4}.</strong></p>
 <pre class="r"><code>medsteps &lt;- median(steps$total, na.rm=&quot;TRUE&quot;)
 medsteps</code></pre>
 <pre><code>## [1] 10765</code></pre>
@@ -114,15 +114,15 @@ intervalMax</code></pre>
 <div id="imputing-missing-values" class="section level4">
 <h4>Imputing missing values</h4>
 <ul>
-<li><p>Calculate and report the total number of missing values in the dataset</p></li>
-<li><p>Fill in all of the missing values in the dataset using the mean for that 5-minute interval.</p></li>
-<li><p>Create a new dataset that is equal to the original dataset but with the missing data filled in.</p></li>
+<li>Calculate and report the total number of missing values in the dataset.</li>
+<li>Devise a strategy for filling in all of the missing values in the dataset.</li>
+<li>Create a new dataset that is equal to the original dataset but with the missing data filled in.</li>
 </ul>
 <pre class="r"><code>missingValueCount &lt;- length(which(is.na(activityData$steps)))
 missingValueCount</code></pre>
 <pre><code>## [1] 2304</code></pre>
 <p><strong>The total number of missing values is 2304.</strong></p>
-<p><strong>Missing values are replaced with mean of values corresponding the 5-minute interval.</strong></p>
+<p><strong>Missing values are replaced with the mean of the missing value’s corresponding the 5-minute interval.</strong></p>
 <pre class="r"><code>newDataSet &lt;- merge(activityData,stepsPerInterval,by.x=&quot;interval&quot;,by.y=&quot;interval&quot;,all=FALSE)
 
 newDataSet$modSteps &lt;- ifelse(is.na(newDataSet$steps), newDataSet$aveSteps, newDataSet$steps)
@@ -141,11 +141,11 @@ stepsReplaceMiss &lt;- ddply(newDataSet, c(&quot;date&quot;), summarise, total =
 <pre class="r"><code>meansteps2 &lt;- mean(stepsReplaceMiss$total, na.rm=&quot;TRUE&quot;)
 meansteps2</code></pre>
 <pre><code>## [1] 10766.19</code></pre>
-<p><strong>The mean total number of steps per day is 1.076618910^{4}. </strong></p>
+<p><strong>The mean total number of steps per day is 1.076618910^{4}.</strong></p>
 <pre class="r"><code>medsteps2 &lt;- median(stepsReplaceMiss$total, na.rm=&quot;TRUE&quot;)
 medsteps2</code></pre>
 <pre><code>## [1] 10766.19</code></pre>
-<p><strong>The median total number of steps per day is 1.076618910^{4}. </strong><br /><strong>The impact of replacing missing values is very small.</strong><br /><strong>The median differs when replacing missing values. It changes from 10765 to 10766.19</strong></p>
+<p><strong>The median total number of steps per day is 1.076618910^{4}.</strong><br /><strong>The impact of replacing missing values is very small.</strong><br /><strong>The median differs when replacing missing values. It changes from 10765 to 10766.19</strong></p>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level4">
 <h4>Are there differences in activity patterns between weekdays and weekends?</h4>

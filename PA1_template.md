@@ -37,7 +37,7 @@ meansteps
 ```
 ## [1] 10766.19
 ```
-**The mean total number of steps per day is 1.0766189\times 10^{4}. **  
+**The mean total number of steps per day is 1.0766189\times 10^{4}.**  
 
 
 ```r
@@ -84,10 +84,8 @@ intervalMax
 
 #### Imputing missing values
 
-* Calculate and report the total number of missing values in the dataset 
-
-* Fill in all of the missing values in the dataset using the mean for that 5-minute interval.
-
+* Calculate and report the total number of missing values in the dataset. 
+* Devise a strategy for filling in all of the missing values in the dataset. 
 * Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```r
@@ -101,7 +99,7 @@ missingValueCount
 **The total number of missing values is 2304.** 
 
 
-**Missing values are replaced with mean of values corresponding the 5-minute interval.** 
+**Missing values are replaced with the mean of the missing value's corresponding the 5-minute interval.** 
 
 ```r
 newDataSet <- merge(activityData,stepsPerInterval,by.x="interval",by.y="interval",all=FALSE)
@@ -132,7 +130,7 @@ meansteps2
 ```
 ## [1] 10766.19
 ```
-**The mean total number of steps per day is 1.0766189\times 10^{4}.  **  
+**The mean total number of steps per day is 1.0766189\times 10^{4}.**  
 
 ```r
 medsteps2 <- median(stepsReplaceMiss$total, na.rm="TRUE")
@@ -142,7 +140,7 @@ medsteps2
 ```
 ## [1] 10766.19
 ```
-**The median total number of steps per day is 1.0766189\times 10^{4}. **  
+**The median total number of steps per day is 1.0766189\times 10^{4}.**  
 **The impact of replacing missing values is very small.**  
 **The median differs when replacing missing values. It changes from 10765 to 10766.19**  
 
