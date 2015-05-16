@@ -79,13 +79,13 @@ missingValueCount
 newDataSet <- merge(activityData,stepsPerInterval,by.x="interval",by.y="interval",all=FALSE)
 
 newDataSet$modSteps <- ifelse(is.na(newDataSet$steps), newDataSet$aveSteps, newDataSet$steps)
-
-stepsReplaceMiss <- ddply(newDataSet, c("date"), summarise, total = sum(modSteps))
 ```
 
 
 * Make a histogram of the total number of steps taken each day
 ```{r, echo=TRUE}
+stepsReplaceMiss <- ddply(newDataSet, c("date"), summarise, total = sum(modSteps))
+
 hist(stepsReplaceMiss$total, main="Total Steps per Day", xlab="Step Count", col="red")
 ```
 
